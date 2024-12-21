@@ -292,8 +292,7 @@
                 .then(function (response) {
                     const { temp, humidity, pressure } = response.data.main;
                     const { description } = response.data.weather[0];
-                    const windSpeed = response.data.wind.speed * 3.6; // Convert to km/h
-                    result1.innerHTML = `The Current Weather in ${cityName} is ${temp}°C with ${description}. Humidity: ${humidity}%, Pressure: ${pressure} hPa, Wind Speed: ${windSpeed.toFixed(2)} km/h.`;
+                    result1.innerHTML = `The Current Weather in ${cityName} is ${temp}°C with ${description}. Humidity: ${humidity}%, Pressure: ${pressure} hPa`;
                 })
                 .catch(function (error) {
                     if (error.response && error.response.data.message) {
