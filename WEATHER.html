@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get accurate and real-time weather updates. Created by Mr. Yahya, this site offers seamless weather insights and is optimized for all devices.">
+    <meta name="keywords" content="Weather updates, Real-time weather, Yahya, Weather by Yahya">
+    <meta name="author" content="Mr. Yahya">
+    <title>Weather by Yahya</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #4facfe, #00f2fe);
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .brand img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .contact {
+            font-size: 1rem;
+        }
+
+        .navbar .contact span {
+            display: block;
+            font-weight: bold;
+        }
+
+        .social-media {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            padding: 10px;
+            background: #007bff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: fit-content;
+            transition: all 0.3s ease-in-out;
+            margin-bottom: 30px;
+        }
+
+        .social-media a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px;
+            border-radius: 50%;
+            background-color: #0056b3;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        .social-media a:hover {
+            background-color: #ff6f61;
+            transform: rotate(360deg) scale(1.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-media:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .full-blur {
+            background-image: url('weather.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: blur(5px);
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .content {
+            position: relative;
+            text-align: center;
+            margin-top: 10vh; /* Adjusting to bring content down */
+            color: #333;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .content input {
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            width: 280px;
+        }
+
+        .content button {
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .content button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            margin-top: 50px;
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 1rem;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .social-links {
+            margin-top: 10px;
+        }
+
+        .footer .social-links a {
+            margin: 0 10px;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .footer .social-links a:hover {
+            color: #ffdd57;
+        }
+
+        .about {
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 800px;
+            text-align: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .about h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .social-media {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .about h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content button {
+                width: 100%;
+            }
+
+            .footer {
+                font-size: 0.8rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <img src="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png" alt="Weather Icon">
+            <span>Weather by Yahya</span>
+        </div>
+        <div class="contact">
+            <span>Contact Us: +923115391696</span>
+            <small>Also on WhatsApp</small>
+        </div>
+    </nav>
+
+    <div class="full-blur"></div>
+
+    <div class="content">
+        <h1>Get the Latest Weather Updates</h1>
+        <input type="text" class="city" placeholder="Enter the city name">
+        <button onclick="weather()">Get Weather</button>
+        <h3 class="result" style="color: yellow;">ENTER CITY NAME TO SHOW WEATHER</h3>
+        <br>
+    </div>
+
+    <div class="about">
+        <h2>About Weather by Yahya</h2>
+        <p>Welcome to Weather by Yahya, your reliable source for accurate and real-time weather updates. Whether you're planning a trip or just curious about the weather in your city, we've got you covered. This platform is proudly developed by Mr. Yahya, combining innovation and user-friendly design to keep you informed.</p>
+    </div>
+
+    <div class="social-media">
+        <a href="https://facebook.com/myahya012" target="_blank" aria-label="Facebook">Facebook</a>
+        <a href="https://youtube.com/@reciteryahya" target="_blank" aria-label="YouTube">YouTube</a>
+        <a href="https://instagram.com/reciteryahya" target="_blank" aria-label="Instagram">Instagram</a>
+        <a href="https://twitter.com/myahya012" target="_blank" aria-label="Twitter">Twitter</a>
+    </div>
+
+    <footer class="footer">
+        <p>Created by <strong>Mr. Yahya</strong>. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="https://facebook.com/myahya012" target="_blank">Facebook</a>
+            <a href="https://youtube.com/@reciteryahya" target="_blank">YouTube</a>
+            <a href="https://instagram.com/reciteryahya" target="_blank">Instagram</a>
+            <a href="https://twitter.com/myahya012" target="_blank">Twitter</a>
+        </div>
+        <p>Contact Us: <a href="tel:+923115391696">+923115391696</a> | <a href="https://wa.me/923115391696" target="_blank">WhatsApp</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function weather() {
+            let cityName = document.querySelector(".city").value;
+            let result1 = document.querySelector(".result");
+
+            if (!cityName) {
+                result1.innerHTML = "Please enter a city name.";
+                return;
+            }
+
+            result1.innerHTML = "Fetching weather data..."; // Show loading message
+
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=42c9534dbe304745166857d57e0c578d&units=metric`)
+                .then(function (response) {
+                    const { temp, humidity, pressure } = response.data.main;
+                    const { description } = response.data.weather[0];
+                    const windSpeed = response.data.wind.speed * 3.6; // Convert to km/h
+                    result1.innerHTML = `The Current Weather in ${cityName} is ${temp}°C with ${description}. Humidity: ${humidity}%, Pressure: ${pressure} hPa, Wind Speed: ${windSpeed.toFixed(2)} km/h.`;
+                })
+                .catch(function (error) {
+                    if (error.response && error.response.data.message) {
+                        result1.innerHTML = `Error: ${error.response.data.message}`; // Display error message from the API
+                    } else {
+                        result1.innerHTML = `Unable to fetch weather. Please try again later.`;
+                    }
+                    console.log(error);
+                });
+        }
+    </script>
+</body>
+</html>
