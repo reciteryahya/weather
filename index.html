@@ -3,305 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get accurate and real-time weather updates. Created by Mr. Yahya, this site offers seamless weather insights and is optimized for all devices.">
-    <meta name="keywords" content="Weather updates, Real-time weather, Yahya, Weather by Yahya">
-    <meta name="author" content="Mr. Yahya">
+    <meta name="description" content="Get real-time weather updates with Yahya's Weather App. Accurate, fast, and simple. Share weather details on social platforms!">
+    <meta name="keywords" content="Weather, Yahya, Real-time weather, Share Weather, Forecast, Social Media">
+    <meta name="author" content="Yahya">
     <title>Weather by Yahya</title>
+    <link rel="icon" href="weather.jpeg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        body {
+        /* General Styling */
+        body, html {
+            height: 100%;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #4facfe, #00f2fe);
-            color: #333;
+            font-family: 'Arial', sans-serif;
         }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: linear-gradient(90deg, #007bff, #00c6ff);
-            color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .navbar .brand {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar .brand img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .navbar .contact {
-            font-size: 1rem;
-        }
-
-        .navbar .contact span {
-            display: block;
-            font-weight: bold;
-        }
-
-        .social-media {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            position: relative;
-            padding: 10px;
-            background: #007bff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: fit-content;
-            transition: all 0.3s ease-in-out;
-            margin-bottom: 30px;
-        }
-
-        .social-media a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.5rem;
-            padding: 15px;
-            border-radius: 50%;
-            background-color: #0056b3;
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            display: inline-block;
-        }
-
-        .social-media a:hover {
-            background-color: #ff6f61;
-            transform: rotate(360deg) scale(1.2);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .social-media:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .full-blur {
-            background-image: url('weather.webp');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            filter: blur(5px);
-            height: 100vh;
+        .yahya1 {
             width: 100%;
+            height: 100vh;
+            object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
+            z-index: -1;
+            filter: blur(5px);
         }
-
-        .content {
+        .overlay {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            text-shadow: 0px 0px 5px black;
+        }
+        .result {
+            margin-top: 20px;
             text-align: center;
-            margin-top: 10vh; /* Adjusting to bring content down */
-            color: #333;
-            padding: 20px;
-            z-index: 1;
-        }
-
-        .content h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .content input {
-            padding: 12px;
-            font-size: 1rem;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-right: 10px;
-            width: 280px;
-        }
-
-        .content button {
-            padding: 12px 24px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-
-        .content button:hover {
-            background-color: #0056b3;
-        }
-
-        .footer {
-            margin-top: 50px;
-            background: linear-gradient(90deg, #007bff, #00c6ff);
-            color: white;
-            text-align: center;
-            padding: 20px 10px;
-            font-size: 1rem;
-        }
-
-        .footer a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .footer .social-links {
-            margin-top: 10px;
-        }
-
-        .footer .social-links a {
-            margin: 0 10px;
-            color: white;
             font-size: 1.5rem;
-            text-decoration: none;
         }
-
-        .footer .social-links a:hover {
-            color: #ffdd57;
+        .share-buttons {
+            margin-top: 20px;
         }
-
-        .about {
-            margin: 40px auto;
-            padding: 20px;
-            max-width: 800px;
-            text-align: center;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .about h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        .about p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .content input {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .social-media {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .about h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .content h1 {
-                font-size: 2rem;
-            }
-
-            .content button {
-                width: 100%;
-            }
-
-            .footer {
-                font-size: 0.8rem;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
+        .share-buttons button {
+            margin: 5px;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="brand">
-            <img src="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png" alt="Weather Icon">
-            <span>Weather by Yahya</span>
+    <center>
+        <h1 class="display-4 weather-banner">WEATHER BY YAHYA</h1>
+        <video class="vh-100 yahya1" autoplay muted loop>
+            <source src="857021-hd_1920_1080_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="overlay">
+            <div class="input-group w-75 w-md-50">
+                <input type="search" class="form-control rounded city" placeholder="Search for a city" aria-label="City name" />
+                <button onclick="weather()" type="button" class="btn btn-outline-primary">Search</button>
+            </div>
+            <h3 class="result"></h3>
+
+            <!-- Share Buttons -->
+            <div class="share-buttons">
+                <button class="btn btn-success" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+                <button class="btn btn-primary" onclick="shareOnTwitter()">Share on Twitter</button>
+                <button class="btn btn-info" onclick="shareOnLinkedIn()">Share on LinkedIn</button>
+            </div>
         </div>
-        <div class="contact">
-            <span>Contact Us: +923115391696</span>
-            <small>Also on WhatsApp</small>
+
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Simple, accurate, Yahya's weather.</p>
+                <footer class="blockquote-footer">CREATED BY <cite title="Source Title">YAHYA</cite></footer>
+            </blockquote>
         </div>
-    </nav>
+    </center>
 
-    <div class="full-blur"></div>
-
-    <div class="content">
-        <h1>Get the Latest Weather Updates</h1>
-        <input type="text" class="city" placeholder="Enter the city name">
-        <button onclick="weather()">Get Weather</button>
-        <h3 class="result" style="color: yellow;">ENTER CITY NAME TO SHOW WEATHER</h3>
-        <br>
-    </div>
-
-    <div class="about">
-        <h2>About Weather by Yahya</h2>
-        <p>Welcome to Weather by Yahya, your reliable source for accurate and real-time weather updates. Whether you're planning a trip or just curious about the weather in your city, we've got you covered. This platform is proudly developed by Mr. Yahya, combining innovation and user-friendly design to keep you informed.</p>
-    </div>
-
-    <div class="social-media">
-        <a href="https://facebook.com/myahya012" target="_blank" aria-label="Facebook">Facebook</a>
-        <a href="https://youtube.com/@reciteryahya" target="_blank" aria-label="YouTube">YouTube</a>
-        <a href="https://instagram.com/reciteryahya" target="_blank" aria-label="Instagram">Instagram</a>
-        <a href="https://twitter.com/myahya012" target="_blank" aria-label="Twitter">Twitter</a>
-    </div>
-
-    <footer class="footer">
-        <p>Created by <strong>Mr. Yahya</strong>. All Rights Reserved.</p>
-        <div class="social-links">
-            <a href="https://facebook.com/myahya012" target="_blank">Facebook</a>
-            <a href="https://youtube.com/@reciteryahya" target="_blank">YouTube</a>
-            <a href="https://instagram.com/reciteryahya" target="_blank">Instagram</a>
-            <a href="https://twitter.com/myahya012" target="_blank">Twitter</a>
-        </div>
-        <p>Contact Us: <a href="tel:+923115391696">+923115391696</a> | <a href="https://wa.me/923115391696" target="_blank">WhatsApp</a></p>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
     <script>
-        function weather() {
-            let cityName = document.querySelector(".city").value;
-            let result1 = document.querySelector(".result");
+        function shareOnWhatsApp() {
+            const city = document.querySelector(".city").value || "the city";
+            const message = `Check out the current weather for ${city} on Weather by Yahya!`;
+            const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
 
-            if (!cityName) {
-                result1.innerHTML = "Please enter a city name.";
-                return;
-            }
+        function shareOnTwitter() {
+            const city = document.querySelector(".city").value || "the city";
+            const message = `Current weather for ${city}! Accurate updates by Weather by Yahya.`;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
 
-            result1.innerHTML = "Fetching weather data..."; // Show loading message
-
-            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=42c9534dbe304745166857d57e0c578d&units=metric`)
-                .then(function (response) {
-                    const { temp, humidity, pressure } = response.data.main;
-                    const { description } = response.data.weather[0];
-                    result1.innerHTML = `The Current Weather in ${cityName} is ${temp}°C with ${description}. Humidity: ${humidity}%, Pressure: ${pressure} hPa`;
-                })
-                .catch(function (error) {
-                    if (error.response && error.response.data.message) {
-                        result1.innerHTML = `Error: ${error.response.data.message}`; // Display error message from the API
-                    } else {
-                        result1.innerHTML = `Unable to fetch weather. Please try again later.`;
-                    }
-                    console.log(error);
-                });
+        function shareOnLinkedIn() {
+            const city = document.querySelector(".city").value || "the city";
+            const message = `Discover the current weather for ${city} with Weather by Yahya. Accurate and real-time updates!`;
+            const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://yourwebsite.com')}`;
+            window.open(shareUrl, '_blank');
         }
     </script>
 </body>
