@@ -9,7 +9,7 @@
 // ==============================
 
 const API_KEY = "acab2fecb6de7de32f067e87f16a3ab2"; // 🔑 Replace with your new OpenWeatherMap key
-const BASE    = "https://api.openweathermap.org/data/2.5";
+const API_URL    = "https://api.openweathermap.org/data/2.5";
 
 // State
 let currentUnit   = "C";   // "C" or "F"
