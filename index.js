@@ -8,8 +8,8 @@
 // 5. Animated Weather Background
 // ==============================
 
-const API_KEY = "afd14e8c5e4665935a157122c640b0d4";
-const API_URL = "https://api.openweathermap.org/data/2.5/weather";
+const API_KEY = "afd14e8c5e4665935a157122c640b0d4"; // 🔑 Replace with your new OpenWeatherMap key
+const BASE    = "https://api.openweathermap.org/data/2.5";
 
 // State
 let currentUnit   = "C";   // "C" or "F"
