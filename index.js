@@ -2,7 +2,7 @@
 // WEATHER BY YAHYA — index.js
 // ==============================
 
-const API_KEY = "42c9534dbe304745166857d57e0c578d";
+const API_KEY = "acab2fecb6de7de32f067e87f16a3ab2";
 const API_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 // Store last weather result for sharing
