@@ -349,7 +349,7 @@ function buildShareMsg() {
     const { name } = lastData;
     const { temp }  = lastData.main;
     const desc       = lastData.weather[0].description;
-    return `🌤 Weather in ${name}: ${convertTemp(temp)} — ${desc.charAt(0).toUpperCase() + desc.slice(1)}. Powered by Weather by Yahya!`;
+    return `🌤 Weather in ${name}: ${convertTemp(temp)} — ${desc.charAt(0).toUpperCase() + desc.slice(1)}. Powered by Weather by Yahya! https://reciteryahya.github.io/weather/`;
 }
 
 function shareOnWhatsApp() {
