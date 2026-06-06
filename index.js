@@ -8,7 +8,7 @@
 // 5. Animated Weather Background
 // ==============================
 
-const API_KEY = "acab2fecb6de7de32f067e87f16a3ab2";
+const API_KEY = "afd14e8c5e4665935a157122c640b0d4";
 const API_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 // State
