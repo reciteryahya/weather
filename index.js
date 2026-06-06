@@ -342,23 +342,47 @@ function fetchWeatherByQuery(query) {
 }
 
 // ==============================
+// ==============================
 // SHARE FUNCTIONS
 // ==============================
+
 function buildShareMsg() {
-    if (!lastData) return "Check real-time weather at Weather by Yahya!";
+    const link = "https://reciteryahya.github.io/weather/";
+
+    if (!lastData) {
+        return `Check real-time weather at Weather by Yahya! ${link}`;
+    }
+
     const { name } = lastData;
-    const { temp }  = lastData.main;
-    const desc       = lastData.weather[0].description;
-    return `🌤 Weather in ${name}: ${convertTemp(temp)} — ${desc.charAt(0).toUpperCase() + desc.slice(1)}. Powered by Weather by Yahya! https://reciteryahya.github.io/weather/`;
+    const { temp } = lastData.main;
+    const desc = lastData.weather[0].description;
+
+    return `🌤 Weather in ${name}: ${convertTemp(temp)} — ${desc.charAt(0).toUpperCase() + desc.slice(1)}. Powered by Weather by Yahya! ${link}`;
 }
 
 function shareOnWhatsApp() {
-    window.open(`https://wa.me/?text=${encodeURIComponent(buildShareMsg())}`, "_blank", "noopener");
+    window.open(
+        `https://wa.me/?text=${encodeURIComponent(buildShareMsg())}`,
+        "_blank",
+        "noopener"
+    );
 }
+
 function shareOnTwitter() {
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(buildShareMsg())}`, "_blank", "noopener");
+    window.open(
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(buildShareMsg())}`,
+        "_blank",
+        "noopener"
+    );
 }
+
 function shareOnLinkedIn() {
-    const url = encodeURIComponent(window.location.href || "https://reciteryahya.github.io/weather/");
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank", "noopener");
+    const shareText = buildShareMsg();
+    const url = encodeURIComponent("https://reciteryahya.github.io/weather/");
+
+    window.open(
+        `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+        "_blank",
+        "noopener"
+    );
 }
